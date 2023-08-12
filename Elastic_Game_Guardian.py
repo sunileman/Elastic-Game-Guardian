@@ -8,10 +8,10 @@ import streamlit as st
 from utils.es_config import index_name
 import pandas as pd
 import time
-import json
 
 from utils.query_builder import build_query
-from variables import openai_api_type, openai_api_base, openai_api_version, es_cloudid, es_password, es_username
+from variables import openai_api_type, openai_api_base, openai_api_version, es_cloudid, es_password, es_username, \
+     openai_completion_deployment_name
 
 openai.api_type = openai_api_type
 openai.api_base = openai_api_base
@@ -79,7 +79,7 @@ if st.button("Search", type='primary'):
         name = results['hits']['hits'][idx]["_source"]["game_title"]
         platform = results['hits']['hits'][idx]["_source"]["platform"]
         response = openai.Completion.create(
-            engine="text-davinci-003",
+            engine=openai_completion_deployment_name,
             prompt="Provide guidance on whether the Xbox game named '" + name + "' is appropriate for children aged " + str(
                 ageSelection) + ". only provide definitive answers.  If uncertain, recommend no. Provide detailed explanation but limit to 40 words",
             max_tokens=128,

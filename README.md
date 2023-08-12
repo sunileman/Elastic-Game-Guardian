@@ -12,7 +12,6 @@ To launch the UI run
 ## Setup
 Configure Azure OpenAI and Elasticsearch Cloud Service parameters in `variables.py`.  Add azure openAI key to `.streamlit/secrets.toml`
 
-
 Example: `variables.py`
 
 ```
@@ -30,5 +29,15 @@ Example: `.streamlit/secrets.toml`
 pass = "your azure openai key"
 ```
 
+### Azure OpenAI Embedding
+The demo uses Azure OpenAI model `text-embedding-ada-002` to generate embeddings. 
+
+The demo uses Azure OpenAI model `text-davinci-003` for prompt completion
+
+
+
+### Data Loading
+For the demo to run with data, a onetime bulk load of game titles along with embeddings is required.  Click on button `Ingest Game Data`
 ![2023-08-11_22-18-52](https://github.com/sunileman/Elastic-Game-Guardian/assets/12245219/41d49f16-df6d-4c0b-beca-32970de5838d)
+
 
