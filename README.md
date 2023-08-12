@@ -26,4 +26,6 @@ es_cloudid = 'ess cloud id'
 
 Example: `.streamlit/secrets.toml`
 
+```
 pass = "your azure openai key"
+```
