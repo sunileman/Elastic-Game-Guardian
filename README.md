@@ -29,3 +29,6 @@ Example: `.streamlit/secrets.toml`
 ```
 pass = "your azure openai key"
 ```
+
+![2023-08-11_22-18-52](https://github.com/sunileman/Elastic-Game-Guardian/assets/12245219/b2eff07f-011d-4964-9cc0-deedf25e201c)
+
