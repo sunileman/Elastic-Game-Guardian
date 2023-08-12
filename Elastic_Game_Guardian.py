@@ -1,6 +1,7 @@
 # Import the required libraries
 import openai
 
+from ingester import ingest_data_into_elastic
 from utils.es_helper import create_es_client
 from utils.openai_embedder import get_embedding
 import streamlit as st
@@ -32,7 +33,6 @@ except Exception as e:
 # Set the GPT-3 API key
 openai.api_key = st.secrets['pass']
 
-
 # Create a list of numbers from 5 to 20
 options = list(range(5, 21))
 
@@ -43,7 +43,6 @@ st.image("./images/solution.png", width=300)
 
 st.title('Elastic Game Guardian')
 st.subheader('AI-Powered Age-Suitable Game Recommendations')
-
 
 platform_selection = st.radio(
     "Gaming Platform:",
@@ -64,7 +63,6 @@ platform_mapping = {
 
 if st.button("Search", type='primary'):
     embeddings = get_embedding(type_of_game_text)
-
 
     query = build_query(embeddings, platform_selection)
 
@@ -94,3 +92,14 @@ if st.button("Search", type='primary'):
     for name, completion_output in stored_results:
         st.markdown(f"**Console: {platform}:Game Title:** {name}")
         st.markdown(f"**Guidance:** {completion_output}\n\n---\n")
+
+# Create some space to push the button down
+st.markdown('#')
+st.markdown('#')
+st.markdown('#')
+
+if st.button('Ingest Game Data'):
+    message = ingest_data_into_elastic()
+
+    # Display the returned message in Streamlit
+    st.text(message)

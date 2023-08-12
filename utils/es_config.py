@@ -2,7 +2,7 @@ index_name = 'games'
 number_of_dims = 1536
 similarity = "dot_product"
 rate_throttle = .2
-deleteExistingIndex = False
+deleteExistingIndex = True
 
 ########for xbox file processing#######
 '''
